@@ -22,7 +22,7 @@ void Counter_of_unique_words::start(const std::string& path)
     stringstream buffer;
     buffer << file.rdbuf();
 
-    str = buffer.str();
+    str = move(buffer.str());
 
     calculate_number_of_unique_words(str);
     print_number_of_unique_words();
