@@ -35,9 +35,9 @@ void Counter_of_unique_words::print_number_of_unique_words()
 
 void  Counter_of_unique_words::search_word(int &i,const std::string& str)
 {
-    mutex m;
+    mutex m2;
     std::string word;
-    m.lock();
+    m2.lock();
 
     for (i; i < str.size() + 1; i++)
     {
@@ -55,11 +55,11 @@ void  Counter_of_unique_words::search_word(int &i,const std::string& str)
             }
             i++;
 
-            m.unlock();
+            m2.unlock();
 
             return;
         }
-        m.unlock();
+        m2.unlock();
     }
 }
 
