@@ -54,16 +54,20 @@ void Counter_of_unique_words::countWord(stringstream& buffer)
     while(true)
     {
         string word;
-        lock_guard<mutex> g(m);
-        buffer >> word;
+        {
+            lock_guard<mutex> g(m);
+            buffer >> word;
+        }
 
-        if(word == "")
+        if(word.empty())
         {
             return;
         }
 
-        lock_guard<mutex> g2(m2);
-        unique_words.insert(move(word));
+        {
+            lock_guard<mutex> g2(m2);
+            unique_words.insert(move(word));
+        }
     }
 
 }
