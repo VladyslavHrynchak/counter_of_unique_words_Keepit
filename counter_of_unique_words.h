@@ -1,22 +1,25 @@
 #ifndef COUNTER_OF_UNIQUE_WORDS_H
 #define COUNTER_OF_UNIQUE_WORDS_H
 
-#include <set>
+#include <unordered_set>
 #include <string>
+#include <mutex>
+#include <sstream>
 class Counter_of_unique_words
 {
 public:
 
-    void start(const std::string& path);
+    std::int64_t countUnique(const std::string& path);
 
 private:
-    void calculate_number_of_unique_words(const std::string& str);
 
-    void print_number_of_unique_words();
+    std::mutex m;
 
-    void search_word(int &i,const std::string& str);
+    std::mutex m2;
 
-    std::set<std::string> unique_words;
+    void countWord(std::stringstream& buffer);
+
+    std::unordered_set<std::string> unique_words;
 };
 
 #endif
