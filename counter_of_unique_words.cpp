@@ -59,7 +59,6 @@ void Counter_of_unique_words::countWord(stringstream& buffer)
 
         if(word == "")
         {
-            m.unlock();
             return;
         }
 
